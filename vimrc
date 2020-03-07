@@ -1,4 +1,3 @@
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set nobackup
@@ -13,9 +12,6 @@ set softtabstop=2
 set expandtab
 set nowrap
 set pastetoggle=<F3>
-colorscheme gruvbox
-set bg=dark
 let mapleader=','
-map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>d :tabnext<CR>
 nnoremap <leader>s :tabprevious<CR>
