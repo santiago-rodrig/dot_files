@@ -1,7 +1,6 @@
 # Config files
 
-- **tmux**: `.tmux.conf`, place it at `$HOME`
-- **vim**: `.vimrc`, place it at `$HOME`
+- **tmux**: `tmux.conf` contains keybindings for splitting panes and copy-pasting the vim way.
+- **vim**: `vimrc` holds feature activations like numbers, no swap files, color column, syntax enabling, etc. All without plugins.
 
-There is an install script `install.sh` that installs all vim plugins that I
-use.
+There is a script for installation named `install.sh` that place these files where they should be, pretty straightforward, avoid the work of place them yourself.
