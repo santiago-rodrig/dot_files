@@ -21,7 +21,7 @@ yourself.
 ## License
 
 This project is licensed under the
-[MIT](https://github.com/santiago-rodrig/vim-tmux/blob/LICENSE)
+[MIT](https://github.com/santiago-rodrig/vim-tmux/blob/master/LICENSE)
 license, which basically means that you can use this code and do whatever you
 want with it as long as you give credit to its author and give notice of the
 license.
