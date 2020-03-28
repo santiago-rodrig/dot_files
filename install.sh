@@ -220,6 +220,6 @@ for CATEGORY in 'colors' 'editing' 'git' 'html' 'markdown' 'navigation' \
         resetColors
         parsePlugin $PLUGIN $FULL_DIR
       done;;
-    *) beginInfo 'INFO'; echo -e "\tfinished plugins' gathering";;
+    *) beginInfo 'INFO'; echo -e "\tfinished plugins' gathering"; resetColors;;
   esac
 done
