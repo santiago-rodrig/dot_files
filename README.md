@@ -4,11 +4,12 @@ Easy configuration and plugins installation for vim, also there is a
 configuration file for tmux, everything that you need to work comfortably
 without needing to clone by hand every plugin repository again.
 
-## Warning
+## Requirements
 
-You'll need vim 8+.
+- vim 8+
+- tmux, a recent version, by the time of this writing I had tmux 2.9a
 
-## Files
+## Configuration files
 
 - .vimrc -> configuration for vim
 - .tmux.conf -> configuration for tmux
