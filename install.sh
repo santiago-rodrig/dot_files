@@ -61,34 +61,33 @@ function checkDir () {
 # once inside $HOME/.vim/pack this function checks for repositories
 
 function checkRepo () {
-  if [ -d $1 ] && ls "$1/.git"; then
+  if [ -d $1 ] && ls "$1/.git" > /dev/null; then
     beginCreate 'UPDATE'
-    echo -e -e "\tupdating $1"
+    echo -e "\t$1"
     resetColors
-    cd $1 && git pull
-  elif [ -d $1 ] && ! ls "$1/.git"; then
+    echo
+    cd $1 && git pull origin master && cd $HOME/.vim/pack
+    echo
+  elif [ -d $1 ] && ! ls "$1/.git" 2 > /dev/null; then
     beginCreate 'CREATE'
     echo -e "\t$1"
     resetColors
+    echo
     rm -rf $1 && git clone https://github.com/$2.git $1
+    echo
   elif ! [ -d $1 ]; then
     beginCreate 'CREATE'
     echo -e "\t$1"
     resetColors
+    echo
     git clone https://github.com/$2.git $1
+    echo
   fi
 }
 
 # check for the existence of $HOME/.vim/pack
 
 checkDir $HOME/.vim/pack
-
-# change directory to $HOME/.vim/pack
-
-beginInfo 'INFO'
-echo -e "\tcurrent directory changed to $HOME/.vim/pack"
-resetColors
-cd $HOME/.vim/pack
 
 # check for the existence of each plugin category
 
@@ -102,7 +101,7 @@ function parsePlugin () {
 
 for CATEGORY in 'colors' 'editing' 'git' 'html' 'markdown' 'navigation' \
   'ruby' 'status-bar' 'textobjects' 'tmux'; do
-  FULL_DIR="./$CATEGORY/start/"
+  FULL_DIR="$HOME/.vim/pack/$CATEGORY/start/"
 
   checkDir $FULL_DIR
 
@@ -203,7 +202,7 @@ for CATEGORY in 'colors' 'editing' 'git' 'html' 'markdown' 'navigation' \
       echo -e "\tgetting $CATEGORY category plugins"
       resetColors
 
-      for PLUGIN in 'kana/vim-textobj-user' 'vim-textobj-entire'; do
+      for PLUGIN in 'kana/vim-textobj-user' 'kana/vim-textobj-entire'; do
         beginInfo 'INFO'
         echo -e "\tparsing $PLUGIN"
         resetColors
@@ -223,3 +222,12 @@ for CATEGORY in 'colors' 'editing' 'git' 'html' 'markdown' 'navigation' \
     *) beginInfo 'INFO'; echo -e "\tfinished plugins' gathering"; resetColors;;
   esac
 done
+
+beginInfo 'INFO'
+echo -e -n "\tthe plugin located at "
+echo -e "$HOME/.vim/pack/markdown/start/markdown-preview.nvim"
+echo -e -n "\trequires a functional yarn installation, once you have yarn, "
+echo -e "go to that same location "
+echo -e "\tand execute yarn install"
+echo
+resetColors
