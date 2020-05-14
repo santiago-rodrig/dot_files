@@ -8,11 +8,6 @@ import (
 )
 
 func installVimPlugins() (err error) {
-    home, err := os.UserHomeDir()
-    if err != nil {
-        log.Fatal("Error: can't access the user home directory")
-        return
-    }
     cmd := exec.Command(
         "vim",
         "+PlugInstall",
