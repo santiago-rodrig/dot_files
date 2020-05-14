@@ -1,10 +1,15 @@
 package main
 
 import (
+    "strings"
     "github.com/santiago-rodrig/vim-setup/download"
     "os/exec"
     "log"
 )
+
+const colorReset string = "\033[0m"
+const colorRed string = "\033[31m"
+const colorGreen string = "\033[32m"
 
 func installVimPlugins() (err error) {
     cmd := exec.Command(
@@ -16,17 +21,47 @@ func installVimPlugins() (err error) {
     return
 }
 
+func buildSuccessMessage(msg string) (successMessage string) {
+    successMessage := strings.Join(
+        []string{
+            colorGreen,
+            "Success",
+            colorReset,
+            ":",
+            " ",
+            msg,
+        },
+        "",
+    )
+    return
+}
+
+func buildErrorMessage(msg string) (errorMessage string) {
+    errorMessage := strings.Join(
+        []string{
+            colorRed,
+            "Error",
+            colorReset,
+            ":",
+            " ",
+            msg,
+        },
+        "",
+    )
+    return
+}
+
 func checkDependencies() (msg string, err error) {
     _, err = exec.LookPath("vim")
     if err != nil {
-        msg = "Error: vim is not present in the PATH"
+        msg = buildErrorMessage("vim is not present in the PATH")
         return
     }
     _, err = exec.LookPath("git")
     if err != nil {
-        msg = "Error: git is not present in the PATH"
+        msg = buildErrorMessage("git is not present in the PATH")
     }
-    msg = "Success: This system has all required dependencies"
+    msg = buildSuccessMessage("this system has all the required dependencies")
     return
 }
 
@@ -41,20 +76,36 @@ func main() {
     // make the preparations
     err = download.FetchVimPlug()
     if err != nil {
-        log.Fatal("Error: vim plugins manager could not be set up")
+        msg = buildErrorMessage(
+            "vim plugins manager could not be set up",
+        )
+        log.Fatal(msg)
     } else {
-        log.Println("Success: vim plugins manager has been set up")
+        msg = buildSuccessMessage(
+            "vim plugins manager has been set up",
+        )
+        log.Println(msg)
     }
     err = download.FetchVimrc()
     if err != nil {
-        log.Fatal("Error: vim configuration file could not be set up")
+        msg = buildErrorMessage(
+            "vim configuration file could not be set up",
+        )
+        log.Fatal(msg)
     } else {
-        log.Println("Success: vim configuration file has been set up")
+        msg = buildSuccessMessage(
+            "vim configuration file has been set up",
+        )
+        log.Println(msg)
     }
     // install vim plugins
     err = installVimPlugins()
     if err != nil {
-        log.Fatal("Error: Installing plugins with vim plug did not work")
+        msg = buildErrorMessage(
+            "installing plugins with vim plug did not work",
+        )
+        log.Fatal(msg)
     }
-    log.Println("Success: Vim plugins successfully installed")
+    msg = buildSuccessMessage("vim plugins successfully installed")
+    log.Println(msg)
 }
