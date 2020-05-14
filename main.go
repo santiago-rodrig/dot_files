@@ -2,7 +2,6 @@ package main
 
 import (
     "github.com/santiago-rodrig/vim-setup/download"
-    "os"
     "os/exec"
     "log"
 )
