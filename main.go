@@ -84,4 +84,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+    time.Sleep(time.Second)
+    log.Println("Vim plugins successfully installed")
 }
