@@ -13,15 +13,33 @@ func installVimPlugins() (err error) {
         "+qa",
     )
     err = cmd.Run()
+    return
+}
+
+func checkDependencies() (msg string, err error) {
+    _, err = exec.LookPath("vim")
     if err != nil {
+        msg = "Error: vim is not present in the PATH"
         return
     }
+    _, err = exec.LookPath("git")
+    if err != nil {
+        msg = "Error: git is not present in the PATH"
+    }
+    msg = "This system has all required dependencies"
     return
 }
 
 func main() {
+    // check dependencies
+    msg, err := checkDependencies()
+    if err != nil {
+        log.Fatal(msg)
+    } else {
+        log.Println(msg)
+    }
     // make the preparations
-    err := download.FetchVimPlug()
+    err = download.FetchVimPlug()
     if err != nil {
         log.Fatal("Error: vim plugins manager could not be set up")
     } else {
