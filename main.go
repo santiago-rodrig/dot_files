@@ -64,4 +64,9 @@ func main() {
             vimPlugURL,
         }," "),
     )
+    err = cmd.Run()
+    if err != nil {
+        log.Fatal(err)
+        return
+    }
 }
