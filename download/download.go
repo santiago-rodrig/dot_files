@@ -39,10 +39,12 @@ func download(url string) (body io.ReadCloser, err error) {
 // Gets the contents of the vimrc file under assets
 // and writes them to $HOME/.vimrc
 func FetchVimrc() (err error) {
-    body, err := download(strings.Join([]string{
-        "https://raw.githubusercontent.com/santiago-rodrig",
-        "vim-setup/master/assets/vimrc",
-    }, "/")
+    body, err := download(
+        strings.Join([]string{
+            "https://raw.githubusercontent.com/santiago-rodrig",
+            "vim-setup/master/assets/vimrc",
+        }, "/"),
+    )
     if !handleError(err) { return }
     home, err := os.UserHomeDir()
     if !handleError(err) { return }
@@ -55,10 +57,12 @@ func FetchVimrc() (err error) {
 // Gets the contents of plug.vim and writes them to
 // $HOME/.vim/autoload/plug.vim
 func FetchVimPlug() (err error) {
-    body, err := download(strings.Join([]string{
-        "https://raw.githubusercontent.com/junegunn",
-        "vim-plug/master/plug.vim",
-    }, "/")
+    body, err := download(
+        strings.Join([]string{
+            "https://raw.githubusercontent.com/junegunn",
+            "vim-plug/master/plug.vim",
+        }, "/"),
+    )
     if !handleError(err) { return }
     home, err := os.UserHomeDir()
     if !handleError(err) { return }
