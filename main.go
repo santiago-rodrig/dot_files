@@ -13,10 +13,11 @@ import (
 func main() {
     // sets the user home directory
     homeDir := os.Getenv("HOME")
-    executableDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+    executable, err := os.Executable()
     if err != nil {
         log.Fatal(err)
     }
+    executableDir = filepath.Dir(executable)
     // gets the contents of the vim configuration file
     vimConfigFile, err := ioutil.ReadFile(
         strings.Join([]string{executableDir,"assets/vimrc"},"/"),
