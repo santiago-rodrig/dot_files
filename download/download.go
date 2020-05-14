@@ -37,7 +37,7 @@ func (m *Message) logMessage() {
 // handles errors
 func handleError(err error) bool {
     if err != nil {
-        msg := Message{"error", err}
+        msg := Message{"error", err.Error()}
         msg.logMessage()
         return false
     }

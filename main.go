@@ -22,7 +22,7 @@ func installVimPlugins() (err error) {
 }
 
 func buildSuccessMessage(msg string) (successMessage string) {
-    successMessage := strings.Join(
+    successMessage = strings.Join(
         []string{
             colorGreen,
             "Success",
@@ -37,7 +37,7 @@ func buildSuccessMessage(msg string) (successMessage string) {
 }
 
 func buildErrorMessage(msg string) (errorMessage string) {
-    errorMessage := strings.Join(
+    errorMessage = strings.Join(
         []string{
             colorRed,
             "Error",
