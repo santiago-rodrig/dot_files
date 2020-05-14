@@ -24,7 +24,7 @@ func main() {
         return
     }
     // writes the contents to the vim configuration file
-    err := ioutil.WriteFile(
+    err = ioutil.WriteFile(
         strings.Join([]string{homeDir,".vimrc"},"/"),
         vimConfigFile,
         os.FileMode(0777),
