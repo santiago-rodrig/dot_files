@@ -5,6 +5,7 @@ import (
     "fmt"
     "io/ioutil"
     "strings"
+    "time"
 )
 
 func main() {
@@ -16,6 +17,7 @@ func main() {
         fmt.Println(err)
         return
     }
+    // writes the contents to the vim configuration file
     writeErr := ioutil.WriteFile(
         strings.Join([]string{homeDir,".vimrc"},"/"),
         vimConfigFile,
@@ -25,4 +27,6 @@ func main() {
         fmt.Println(writeErr)
         return
     }
+    time.Sleep(time.Second)
+    fmt.Println("$HOME/.vimrc has been set up")
 }
