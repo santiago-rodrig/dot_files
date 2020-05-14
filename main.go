@@ -77,6 +77,10 @@ func main() {
     // install vim plugins
     cmd = exec.Command(
         "vim",
+	"-E",
+	"-s",
+	"-u",
+	homeDir + "/.vimrc",
         "+PlugInstall",
         "+qa",
     )
