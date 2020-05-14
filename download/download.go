@@ -8,10 +8,37 @@ import (
     "log"
 )
 
+const colorReset string = "\033[0m"
+const colorRed string = "\033[31m"
+const colorGreen string = "\033[32m"
+
+type Message struct {
+    kind, text string
+}
+
+func (m *Message) logMessage() {
+    msg := []string{
+        "color",
+        "kind",
+        colorReset,
+        ":",
+        m.text,
+    }
+    switch m.kind {
+    case "error":
+        msg[0], msg[1] = colorRed, "Error"
+        log.Fatal(strings.Join(msg, ""))
+    case "success":
+        msg[0], msg[1] = colorGreen, "Success"
+        log.Println(strings.Join(msg, ""))
+    }
+}
+
 // handles errors
 func handleError(err error) bool {
     if err != nil {
-        log.Fatal("Error:", err)
+        msg := Message{"error", err}
+        msg.logMessage()
         return false
     }
 
