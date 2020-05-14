@@ -26,7 +26,7 @@ func checkDependencies() (msg string, err error) {
     if err != nil {
         msg = "Error: git is not present in the PATH"
     }
-    msg = "This system has all required dependencies"
+    msg = "Success: This system has all required dependencies"
     return
 }
 
@@ -56,5 +56,5 @@ func main() {
     if err != nil {
         log.Fatal("Error: Installing plugins with vim plug did not work")
     }
-    log.Println("Vim plugins successfully installed")
+    log.Println("Success: Vim plugins successfully installed")
 }
