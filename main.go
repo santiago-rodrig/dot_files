@@ -43,13 +43,6 @@ func main() {
         log.Fatal(err)
         return
     }
-    // look for the existence of curl on the system
-    _, err = exec.LookPath("curl")
-    if err != nil {
-        log.Println("Please install curl: https://curl.haxx.se/download.html")
-        log.Fatal(err)
-        return
-    }
     // look for the existence of git on the system
     _, err = exec.LookPath("git")
     if err != nil {
@@ -77,10 +70,10 @@ func main() {
     // install vim plugins
     cmd = exec.Command(
         "vim",
-	"-E",
-	"-s",
-	"-u",
-	homeDir + "/.vimrc",
+        "-E",
+        "-s",
+        "-u",
+        homeDir + "/.vimrc",
         "+PlugInstall",
         "+qa",
     )
