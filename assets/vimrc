@@ -34,7 +34,7 @@ set colorcolumn=81
 set noshowmode
 set wildmenu
 set pastetoggle=<F3>
-colorscheme codedark
+silent! colorscheme codedark
 let mapleader=','
 autocmd FileType html let g:loaded_matchparen=1
 nmap <leader>o :set foldlevel=0<CR>

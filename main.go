@@ -83,6 +83,7 @@ func main() {
     err = cmd.Run()
     if err != nil {
         log.Fatal("Installing plugins with vim plug did not work")
+        return
     }
     time.Sleep(time.Second)
     log.Println("Vim plugins successfully installed")
