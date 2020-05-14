@@ -7,18 +7,19 @@ import (
     "io/ioutil"
     "strings"
     "time"
+    "path/filepath"
 )
 
 func main() {
     // sets the user home directory
     homeDir := os.Getenv("HOME")
-    workingDir, err := os.Getwd()
+    executableDir, err := filepath.Abs(filepath.Dir(os.Args[0]))
     if err != nil {
         log.Fatal(err)
     }
     // gets the contents of the vim configuration file
     vimConfigFile, err := ioutil.ReadFile(
-        strings.Join([]string{workingDir,"/assets/vimrc"},"/"),
+        strings.Join([]string{executableDir,"assets/vimrc"},"/"),
     )
     if err != nil {
         log.Fatal(err)
