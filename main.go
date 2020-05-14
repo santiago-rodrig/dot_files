@@ -36,10 +36,16 @@ func main() {
     }
     time.Sleep(time.Second)
     log.Println("$HOME/.vimrc has been set up")
-    // look for the existence of git on the system
+    // look for the existence of curl on the system
     path, err := exec.LookPath("curl")
     if err != nil {
         log.Println("Please install curl: https://curl.haxx.se/download.html")
+        log.Fatal(err)
+    }
+    // look for the existence of git on the system
+    path, err = exec.LookPath("git")
+    if err != nil {
+        log.Println("Please install git: https://git-scm.com/downloads")
         log.Fatal(err)
     }
 }
