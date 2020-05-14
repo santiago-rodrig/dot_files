@@ -74,4 +74,14 @@ func main() {
         log.Fatal(err)
         return
     }
+    // install vim plugins
+    cmd = exec.Command(
+        "vim",
+        "+PlugInstall",
+        "+qa"
+    )
+    err = cmd.Run()
+    if err != nil {
+        log.Fatal(err)
+    }
 }
