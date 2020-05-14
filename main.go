@@ -17,8 +17,5 @@ func main() {
         return
     }
     // deletes existing user vimrc if there is any
-    err := os.Remove(strings.Join([]string{homeDir,".vimrc"},"/"))
-    if err != nil {
-        fmt.Println(err)
-    }
+    os.Remove(strings.Join([]string{homeDir,".vimrc"},"/"))
 }
