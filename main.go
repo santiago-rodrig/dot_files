@@ -30,7 +30,7 @@ func main() {
         os.FileMode(0777),
     )
     if err != nil {
-        fmt.Println(writeErr)
+        fmt.Println(err)
         return
     }
     time.Sleep(time.Second)
