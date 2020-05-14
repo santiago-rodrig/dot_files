@@ -41,11 +41,27 @@ func main() {
     if err != nil {
         log.Println("Please install curl: https://curl.haxx.se/download.html")
         log.Fatal(err)
+        return
     }
     // look for the existence of git on the system
     path, err = exec.LookPath("git")
     if err != nil {
         log.Println("Please install git: https://git-scm.com/downloads")
         log.Fatal(err)
+        return
     }
+    // set the command for installing vim-plug
+    vimPlugURL := strings.Join([]string{
+        "https://raw.githubusercontent.com/junegunn",
+        "vim-plug/master/plug.vim",
+    },"/")
+    cmd := exec.Command(
+        "curl",
+        strings.Join([]string{
+            "-fLo",
+            homeDir + "/.vim/autoload/plug.vim",
+            "--create-dirs",
+            vimPlugURL,
+        }," "),
+    )
 }
