@@ -8,33 +8,31 @@ import (
     "strings"
     "time"
     "path/filepath"
+    "net/http"
 )
 
 func main() {
     // sets the user home directory
     homeDir := os.Getenv("HOME")
-    executable, err := os.Executable()
-    if err != nil {
-        log.Fatal(err)
-    }
-    executableDir := filepath.Dir(executable)
     // gets the contents of the vim configuration file
-    vimConfigFile, err := ioutil.ReadFile(
-        strings.Join([]string{executableDir,"assets/vimrc"},"/"),
-    )
+    vimConfigURL := strings.Join([]string{
+        "https://raw.githubusercontent.com/santiago-rodrig",
+        "vim-setup/master/assets/vimrc",
+    },"/")
+    response, err := http.Get(vimConfigURL)
     if err != nil {
         log.Fatal(err)
         return
     }
     // writes the contents to the vim configuration file
-    err = ioutil.WriteFile(
-        strings.Join([]string{homeDir,".vimrc"},"/"),
-        vimConfigFile,
-        os.FileMode(0777),
-    )
+    userVimFile, err := os.Create(homeDir + "/.vimrc")
     if err != nil {
         log.Fatal(err)
         return
+    }
+    _, err = io.Copy(userVimFile, response.Body)
+    if err != nil {
+        log.Fatal(err)
     }
     time.Sleep(time.Second)
     log.Println("$HOME/.vimrc has been set up")
