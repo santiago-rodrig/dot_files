@@ -16,15 +16,13 @@ func main() {
         fmt.Println(err)
         return
     }
-    // deletes existing user vimrc if there is any
-    os.Remove(strings.Join([]string{homeDir,".vimrc"},"/"))
-    // creates a new .vimrc file
-    userVimConfigFile, createErr := os.Create(
+    writeErr := ioutil.WriteFile(
         strings.Join([]string{homeDir,".vimrc"},"/"),
+        vimConfigFile,
+        os.Filemode(0777),
     )
-    defer userVimConfigFile.Close()
-    if createErr != nil {
-        fmt.Println(createErr)
+    if writeErr != nil {
+        fmt.Println(writeErr)
         return
     }
 }
