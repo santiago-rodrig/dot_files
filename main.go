@@ -22,6 +22,7 @@ func main() {
     userVimConfigFile, createErr := os.Create(
         strings.Join([]string{homeDir,".vimrc"},"/"),
     )
+    defer userVimConfigFile.Close()
     if createErr != nil {
         fmt.Println(createErr)
         return
