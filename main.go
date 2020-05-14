@@ -38,7 +38,7 @@ func main() {
     time.Sleep(time.Second)
     log.Println("$HOME/.vimrc has been set up")
     // look for the existence of vim on the system
-    _, err := exec.LookPath("vim")
+    _, err = exec.LookPath("vim")
     if err != nil {
         log.Println("Please install vim: https://www.vim.org/download.php")
         log.Fatal(err)
