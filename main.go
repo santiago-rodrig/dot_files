@@ -72,7 +72,7 @@ func main() {
     )
     err = cmd.Run()
     if err != nil {
-        log.Fatal(err)
+        log.Fatal("Fetching vim plug did not work")
         return
     }
     // install vim plugins
@@ -83,7 +83,7 @@ func main() {
     )
     err = cmd.Run()
     if err != nil {
-        log.Fatal(err)
+        log.Fatal("Installing plugins with vim plug did not work")
     }
     time.Sleep(time.Second)
     log.Println("Vim plugins successfully installed")
