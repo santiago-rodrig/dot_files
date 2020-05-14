@@ -29,6 +29,7 @@ func main() {
         log.Fatal(err)
         return
     }
+    defer userVimFile.Close()
     _, err = io.Copy(userVimFile, response.Body)
     if err != nil {
         log.Fatal(err)
