@@ -14,17 +14,29 @@ func installVimPlugins() (err error) {
     )
     err = cmd.Run()
     if err != nil {
-        log.Fatal("Error: Installing plugins with vim plug did not work")
         return
     }
-    log.Println("Vim plugins successfully installed")
     return
 }
 
 func main() {
     // make the preparations
-    download.FetchVimPlug()
-    download.FetchVimrc()
+    err := download.FetchVimPlug()
+    if err != nil {
+        log.Fatal("Error: vim plugins manager could not be set up")
+    } else {
+        log.Println("Success: vim plugins manager has been set up")
+    }
+    err = download.FetchVimrc()
+    if err != nil {
+        log.Fatal("Error: vim configuration file could not be set up")
+    } else {
+        log.Println("Success: vim configuration file has been set up")
+    }
     // install vim plugins
-    installVimPlugins()
+    err = installVimPlugins()
+    if err != nil {
+        log.Fatal("Error: Installing plugins with vim plug did not work")
+    }
+    log.Println("Vim plugins successfully installed")
 }
