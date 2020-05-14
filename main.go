@@ -2,7 +2,8 @@ package main
 
 import (
     "os"
-    "fmt"
+    "os/exec"
+    "log"
     "io/ioutil"
     "strings"
     "time"
@@ -13,14 +14,14 @@ func main() {
     homeDir := os.Getenv("HOME")
     workingDir, err := os.Getwd()
     if err != nil {
-	    fmt.Println(err)
+        log.Fatal(err)
     }
     // gets the contents of the vim configuration file
     vimConfigFile, err := ioutil.ReadFile(
-	    strings.Join([]string{workingDir,"/assets/vimrc"},"/"),
+        strings.Join([]string{workingDir,"/assets/vimrc"},"/"),
     )
     if err != nil {
-        fmt.Println(err)
+        log.Fatal(err)
         return
     }
     // writes the contents to the vim configuration file
@@ -30,9 +31,14 @@ func main() {
         os.FileMode(0777),
     )
     if err != nil {
-        fmt.Println(err)
+        log.Fatal(err)
         return
     }
     time.Sleep(time.Second)
-    fmt.Println("$HOME/.vimrc has been set up")
+    log.Println("$HOME/.vimrc has been set up")
+    // look for the existence of git on the system
+    path, err := exec.LookPath("git")
+    if err != nil {
+        log.Fatal(err)
+    }
 }
