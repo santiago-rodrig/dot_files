@@ -3,11 +3,10 @@ package main
 import (
     "os"
     "os/exec"
+    "io"
     "log"
-    "io/ioutil"
     "strings"
     "time"
-    "path/filepath"
     "net/http"
 )
 
