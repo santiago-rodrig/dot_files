@@ -10,7 +10,7 @@ import (
 
 func main() {
     // sets the user home directory
-    homeDir := os.GetEnv("HOME")
+    homeDir := os.Getenv("HOME")
     // gets the contents of the vim configuration file
     vimConfigFile, err := ioutil.ReadFile("./assets/vimrc")
     if err != nil {
@@ -21,7 +21,7 @@ func main() {
     writeErr := ioutil.WriteFile(
         strings.Join([]string{homeDir,".vimrc"},"/"),
         vimConfigFile,
-        os.Filemode(0777),
+        os.FileMode(0777),
     )
     if writeErr != nil {
         fmt.Println(writeErr)
