@@ -15,10 +15,6 @@ func installVimPlugins() (err error) {
     }
     cmd := exec.Command(
         "vim",
-        "-E",
-        "-s",
-        "-u",
-        home + "/.vimrc",
         "+PlugInstall",
         "+qa",
     )
