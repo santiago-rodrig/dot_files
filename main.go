@@ -19,7 +19,11 @@ func main() {
     // deletes existing user vimrc if there is any
     os.Remove(strings.Join([]string{homeDir,".vimrc"},"/"))
     // creates a new .vimrc file
-    userVimConfigFile, err := os.Create(
+    userVimConfigFile, createErr := os.Create(
         strings.Join([]string{homeDir,".vimrc"},"/"),
     )
+    if createErr != nil {
+        fmt.Println(createErr)
+        return
+    }
 }
