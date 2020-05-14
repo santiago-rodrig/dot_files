@@ -79,7 +79,7 @@ func main() {
     cmd = exec.Command(
         "vim",
         "+PlugInstall",
-        "+qa"
+        "+qa",
     )
     err = cmd.Run()
     if err != nil {
