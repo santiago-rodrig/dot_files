@@ -39,6 +39,7 @@ func main() {
     // look for the existence of git on the system
     path, err := exec.LookPath("git")
     if err != nil {
+        log.Println("Please install git: https://git-scm.com/downloads")
         log.Fatal(err)
     }
 }
