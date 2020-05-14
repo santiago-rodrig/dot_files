@@ -36,8 +36,15 @@ func main() {
     }
     time.Sleep(time.Second)
     log.Println("$HOME/.vimrc has been set up")
+    // look for the existence of vim on the system
+    path, err := exec.LookPath("vim")
+    if err != nil {
+        log.Println("Please install vim: https://www.vim.org/download.php")
+        log.Fatal(err)
+        return
+    }
     // look for the existence of curl on the system
-    path, err := exec.LookPath("curl")
+    path, err = exec.LookPath("curl")
     if err != nil {
         log.Println("Please install curl: https://curl.haxx.se/download.html")
         log.Fatal(err)
