@@ -57,12 +57,10 @@ func main() {
     },"/")
     cmd := exec.Command(
         "curl",
-        strings.Join([]string{
-            "-fLo",
-            homeDir + "/.vim/autoload/plug.vim",
-            "--create-dirs",
-            vimPlugURL,
-        }," "),
+        "-fLo",
+        homeDir + "/.vim/autoload/plug.vim",
+        "--create-dirs",
+        vimPlugURL,
     )
     err = cmd.Run()
     if err != nil {
