@@ -17,7 +17,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    executableDir = filepath.Dir(executable)
+    executableDir := filepath.Dir(executable)
     // gets the contents of the vim configuration file
     vimConfigFile, err := ioutil.ReadFile(
         strings.Join([]string{executableDir,"assets/vimrc"},"/"),
