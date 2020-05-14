@@ -13,7 +13,7 @@ func installVimPlugins() (err error) {
         log.Fatal("Error: can't access the user home directory")
         return
     }
-    cmd = exec.Command(
+    cmd := exec.Command(
         "vim",
         "-E",
         "-s",
@@ -28,6 +28,7 @@ func installVimPlugins() (err error) {
         return
     }
     log.Println("Vim plugins successfully installed")
+    return
 }
 
 func main() {
