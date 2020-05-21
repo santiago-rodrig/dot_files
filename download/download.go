@@ -21,7 +21,7 @@ func (m *Message) logMessage() {
 		"color",
 		"kind",
 		colorReset,
-		":",
+		": ",
 		m.text,
 	}
 	switch m.kind {
@@ -47,7 +47,7 @@ func handleError(err error) bool {
 
 // prepares $HOME/.vim/autoload
 func prepareVimFolder() (err error) {
-	fileMode := os.ModeDir
+	fileMode := os.FileMode(0755)
 	home, err := os.UserHomeDir()
 	if !handleError(err) {
 		return
