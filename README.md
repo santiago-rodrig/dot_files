@@ -9,7 +9,7 @@ without needing to clone by hand every plugin repository again.
 
 ## Release
 
-Just grab [this]() file and execute from anywhere you want.
+Just grab [this](https://github.com/santiago-rodrig/vim-setup/releases/download/v0.0.0/vim-setup) file and execute from anywhere you want.
 
 ## Source code
 
