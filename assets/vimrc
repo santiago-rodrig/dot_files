@@ -1,50 +1,27 @@
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf'
-Plug 'tomasiser/vim-code-dark'
+" text object fundations
 Plug 'kana/vim-textobj-user'
+" entire buffer text object
 Plug 'kana/vim-textobj-entire'
+" line text object
 Plug 'kana/vim-textobj-line'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'mattn/emmet-vim'
-Plug 'AndrewRadev/tagalong.vim'
+" surroundings of text actions (parenthesis, quotes, brackets, etc.)
 Plug 'tpope/vim-surround'
+" comment action
 Plug 'tpope/vim-commentary'
-Plug 'christoomey/vim-system-copy'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'majutsushi/tagbar'
 call plug#end()
 syntax on
 filetype plugin indent on
-set rtp+=/usr/bin/fzf
 set relativenumber
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab
 set foldmethod=indent
-set foldlevel=100
-set nowrap
+set foldlevel=5
 set colorcolumn=81
-set noshowmode
 set wildmenu
 set pastetoggle=<F3>
-silent! colorscheme codedark
 let mapleader=','
-autocmd FileType html let g:loaded_matchparen=1
-nmap <leader>o :set foldlevel=0<CR>
-nmap <leader>u :set foldlevel=10<CR>
 nmap <leader>nt :tabnext<CR>
 nmap <leader>pt :tabprevious<CR>
-nmap <leader>f :FZF<CR>
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_theme='codedark'
-set guifont=Input\ Mono\ Regular\ 12
