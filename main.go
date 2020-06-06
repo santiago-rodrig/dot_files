@@ -60,6 +60,7 @@ func checkDependencies() (msg string, err error) {
     _, err = exec.LookPath("git")
     if err != nil {
         msg = buildErrorMessage("git is not present in the PATH")
+        return
     }
     msg = buildSuccessMessage("this system has all the required dependencies")
     return

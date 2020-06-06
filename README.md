@@ -7,13 +7,13 @@ without needing to clone by hand every plugin repository again.
 
 - vim 8+
 
-## Configuration files
+## Release
 
-- .vimrc -> configuration for vim
+Just grab [this]() file and execute from anywhere you want.
 
-There is a **script for installation named `install.sh`** that places these files
-where they should be, pretty straightforward, avoid the work of placing them
-yourself.
+## Source code
+
+The files `main.go` and `download/download.go` hold all the source code for this project.
 
 ## License
 
