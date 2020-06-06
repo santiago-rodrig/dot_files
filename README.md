@@ -23,7 +23,7 @@ license, which basically means that you can use this code and do whatever you
 want with it as long as you give credit to its author and give notice of the
 license.
 
-## Credit
+## Credits
 
 This project was developed by
 [santiago-rodrig](https://github.com/santiago-rodrig)
